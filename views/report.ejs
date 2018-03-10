@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Task Tracker</title>
+  <style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		font-size: 15px;
+		width: 100%;
+	}
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+	.floatright {
+		float: right;
+	}
+  </style>
+  <script type="text/javascript" src="javascripts/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="javascripts/form.js"></script>
+  <script type="text/javascript">
+	projectList = <%- JSON.stringify(projectList.recordset) %>
+	taskTypeList = <%- JSON.stringify(taskMasterList.recordset) %>
+	SystemList = <%- JSON.stringify(systemList.recordset) %>
+	subSystemList = <%- JSON.stringify(subSystems.recordset) %>
+	MediaTypeList = <%- JSON.stringify(MediaTypeList.recordset) %>
+	WorkTypeList = <%- JSON.stringify(WorkTypeList.recordset) %>
+	StateList = <%- JSON.stringify(stateList.recordset) %>
+	empList = <%- JSON.stringify(employeeList.recordset) %>
+	currentSession = <%- JSON.stringify(currSession) %>
+	normalUsers = <%- JSON.stringify(normalUsers.recordset) %>
+	userId = currentSession.userId;
+	userRole = currentSession.userType;
+  </script>
+  </head>
+  <body>
+    <b><a class="floatright" href="/logout">logout</a></b>
+      <h3 style="color:Tomato;" >Task Tracker</h3>
+
+<% if(currSession.userType != "Manager"){ %>
+<% } %>
+
+	<p id="user" ></p><br>
+	<b id="dashboardTitle" style="color:Tomato;"></b>
+	<br><br>
+	<table id = "dashboardTableHeader" style="color:DodgerBlue;" class="table">
+    <thead>
+      <tr>
+      <th>Employee</th>
+      <th>Project</th>
+      <th>Task</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Status</th>
+	  <th>Total Time(h/m/s)</th>
+      </tr>
+    </thead>
+      <tbody id="dashboardTableBody">
+      </tbody>
+	</table>
+	
+	<br>
+	<b id="date" style="color:Tomato;"></b>
+	<br>
+	<p id="note"></p>
+	<table style="color:DodgerBlue;" class="table">
+    <thead>
+      <tr>
+      <th>Employee</th>
+      <th>Date</th>
+      <th>Project</th>
+      <th>Task</th>
+  	  <th>System</th>
+  	  <th>Sub-System</th>
+      <th>Media Type</th>
+      <th>Work Type</th>
+      <th>Media Count</th>
+	  <th>Comments</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+	  <th>Total Time(h/m/s)</th>
+      <th>Status</th>
+	  <th>Action</th>
+      </tr>
+    </thead>
+      <tbody id="tableHtml">
+      </tbody>
+	</table>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

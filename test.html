@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>The = Operator</h2>
+<p id="demo"></p>
+<script>
+var x = 10;
+document.getElementById("demo").innerHTML = x;
+
+var query = "respond customer";
+
+var des1 = [];
+var des2 = [];
+var c = [
+'respond to customer after receiving the design',
+'responding to customer after receiving the design',
+'reply to customer after receiving the design',
+'replying to customer after receiving the design',
+'email to customer after receiving the design',
+'emailing to customer after receiving the design',
+];
+
+var stringArr = query.split(' ');
+
+for(var j = 0; j < stringArr.length; j++)
+{
+	if(j == 0)
+    {
+    	for(var i = 0; i < c.length; i++)
+        {
+			if( c[i].indexOf(stringArr[0]) != -1)
+      		{
+        		des1.push(c[i]);
+                //console.log("des1 : " + c[i])
+      		}
+        }
+    }
+    else if(j == 1)
+    {
+    	for(var k = 0; k < des1.length; k++)
+        {
+			if( des1[k].indexOf(stringArr[1]) != -1)
+      		{
+        		des2.push(des1[k]);
+                //console.log("des2 : " + des1[k])
+      		}
+        }
+    }
+}
+
+for(var m = 0; m < des2.length; m++)
+{
+	console.log("des2 : " + des2[m]);
+}
+</script>
+
+</body>
+</html>
